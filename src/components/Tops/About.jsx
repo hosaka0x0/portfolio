@@ -1,4 +1,10 @@
+import { useState } from "react"
+
 function About({activeTab,setActiveTab,theme,setTheme}){
+    const[card,setCard]=useState(false)
+    const toggleBool =()=>{
+        console.log('クリックされた！現在の状態:', card)
+        setCard(!card)}
     return(
         <div className={`tab-content ${activeTab === 'about' ? 'active' : ''}`}>
           <div className="about-grid">
@@ -10,16 +16,16 @@ function About({activeTab,setActiveTab,theme,setTheme}){
               <div className="timeline-container">
                 <div className="timeline-item">
                   <div className="timeline-period">2024.2-2024.11</div>
-                  <div className="card-wrapper">
+                  <div className={`card-wrapper ${card ? 'expanded' : ''}`}>
                     <div className="timeline-line"></div>
                     <div className="speech-icon">
                       <div className="speech-icon-inner"></div>
                     </div>
-                    <div className="card-header" onclick="toggleCard(this)">
+                    <div className="card-header" onClick={toggleBool}>
                       <h3 className="company-name">株式会社ツドイ</h3>
                       <span className="badge">intern</span>
                     </div>
-                    <div className="card-content">
+                    <div className={`card-content ${card ? 'active':''}`}>
                       <div className="role-title">編集・インターン</div>
                       <p className="description">
                         記事の執筆や、ツドイの学校を通じて学びを深めました。
@@ -43,11 +49,11 @@ function About({activeTab,setActiveTab,theme,setTheme}){
                     <div className="speech-icon">
                       <div className="speech-icon-inner"></div>
                     </div>
-                    <div className="card-header" onclick="toggleCard(this)">
+                    <div className="card-header" onClick={toggleBool}>
                       <h3 className="company-name">株式会社playground</h3>
                       <span className="badge">intern</span>
                     </div>
-                    <div className="card-content">
+                    <div className={`card-content ${card ? 'active':''}`}>
                       <div className="role-title">OAエンジニア インターン</div>
                       <p className="description">
                         営業部門における業務フローの可視化とシステム実装による業務効率化を実施
@@ -70,7 +76,7 @@ function About({activeTab,setActiveTab,theme,setTheme}){
                     <div className="event-timeline-line"></div>
                     <div
                       className="event-card-header"
-                      onclick="toggleEventCard(this)"
+                      onClick={() => {}}
                     >
                       <div className="event-title">CG-Arts賞</div>
                     </div>
@@ -83,7 +89,7 @@ function About({activeTab,setActiveTab,theme,setTheme}){
                     <div className="event-timeline-line"></div>
                     <div
                       className="event-card-header"
-                      onclick="toggleEventCard(this)"
+                      onClick={() => {}}
                     >
                       <div className="event-title">
                         Jeonju Global Game Jam 2024 in Korea
@@ -104,7 +110,7 @@ function About({activeTab,setActiveTab,theme,setTheme}){
                     <div className="event-timeline-line"></div>
                     <div
                       className="event-card-header"
-                      onclick="toggleEventCard(this)"
+                      onClick={() => {}}
                     >
                       <div className="event-title">
                         日本大学生産工学部数理情報工学科
