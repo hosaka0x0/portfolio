@@ -1,21 +1,35 @@
+import { useState } from "react"
+
+
 function App() {
+  const [activeTab, setActiveTab] = useState('hello')
+  const [theme, setTheme] = useState('light')
   return (
     <>
-      {<body>
+      {
     <div className="portfolio-container">
       {/* 左側サイドバー */}
       <aside className="sidebar">
         {/* ナビゲーションタブ */}
         <nav className="nav-tabs">
-          <button className="nav-tab active" data-tab="hello">
+          <button
+            className={`nav-tab ${activeTab === 'hello' ? 'active' : ''}`}
+            onClick={() => setActiveTab('hello')}
+          >
             <span className="tab-number">01</span>
             <span className="tab-label">Hello</span>
           </button>
-          <button className="nav-tab" data-tab="about">
+          <button
+            className={`nav-tab ${activeTab === 'about' ? 'active' : ''}`}
+            onClick={() => setActiveTab('about')}
+          >
             <span className="tab-number">02</span>
             <span className="tab-label">About</span>
           </button>
-          <button className="nav-tab" data-tab="works">
+          <button
+            className={`nav-tab ${activeTab === 'works' ? 'active' : ''}`}
+            onClick={() => setActiveTab('works')}
+          >
             <span className="tab-number">03</span>
             <span className="tab-label">Works</span>
           </button>
@@ -39,29 +53,27 @@ function App() {
 
         {/* テーマ切替ボタン */}
         <div className="theme-toggles">
-          <div className="toggle-row">
-            <button className="theme-btn active" data-theme="light">
-              <span>Light</span>
-            </button>
-            <button className="theme-btn" data-theme="dark">
-              <span>Dark</span>
-            </button>
-          </div>
-          <div className="toggle-row">
-            <button className="theme-btn active" data-theme="light">
-              <span>Light</span>
-            </button>
-            <button className="theme-btn" data-theme="dark">
-              <span>Dark</span>
-            </button>
-          </div>
+        <div className="toggle-row">
+          <button
+            className={`theme-btn ${theme === 'light' ? 'active' : ''}`}
+            onClick={() => setTheme('light')}
+          >
+            <span>Light</span>
+          </button>
+          <button
+            className={`theme-btn ${theme === 'dark' ? 'active' : ''}`}
+            onClick={() => setTheme('dark')}
+          >
+            <span>Dark</span>
+          </button>
         </div>
+</div>
       </aside>
 
       {/* メインコンテンツエリア */}
       <main className="content-area">
         {/* Hello タブコンテンツ */}
-        <div className="tab-content active" id="hello-content">
+        <div className={`tab-content ${activeTab === 'hello' ? 'active' : ''}`}>
           <div className="hello-content">
             <div className="hello-main">
               {/* プロフィールセクション */}
@@ -76,7 +88,7 @@ function App() {
                     <img
                       src="images/portfolio.png"
                       alt="Profile"
-                      onError="this.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'"
+                      onError={(e) => e.target.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'}
                     />
                   </div>
 
@@ -171,7 +183,7 @@ function App() {
         </div>
 
         {/* About タブコンテンツ */}
-        <div className="tab-content" id="about-content">
+        <div className={`tab-content ${activeTab === 'about' ? 'active' : ''}`}>
           <div className="about-grid">
             {/* Work Experience */}
             <div className="about-section">
@@ -289,7 +301,7 @@ function App() {
         </div>
 
         {/* Works タブコンテンツ */}
-        <div className="tab-content" id="works-content">
+        <div className={`tab-content ${activeTab === 'works' ? 'active' : ''}`}>
           <div className="works-content">
             <h1>My Works</h1>
             <p>制作物がここに入ります</p>
@@ -298,7 +310,7 @@ function App() {
       </main>
     </div>
 
-  </body>}
+  }
     </>
   )
 }
