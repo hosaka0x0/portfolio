@@ -1,0 +1,59 @@
+import { useState } from "react"
+function Sidebar({ activeTab, setActiveTab, theme, setTheme }) {
+  return (
+    <aside className="sidebar">
+        {/* ナビゲーションタブ */}
+        <nav className="nav-tabs">
+          <button
+            className={`nav-tab ${activeTab === 'hello' ? 'active' : ''}`}
+            onClick={() => setActiveTab('hello')}
+          >
+            <span className="tab-number">01</span>
+            <span className="tab-label">Hello</span>
+          </button>
+          <button
+            className={`nav-tab ${activeTab === 'about' ? 'active' : ''}`}
+            onClick={() => setActiveTab('about')}
+          >
+            <span className="tab-number">02</span>
+            <span className="tab-label">About</span>
+          </button>
+          <button
+            className={`nav-tab ${activeTab === 'works' ? 'active' : ''}`}
+            onClick={() => setActiveTab('works')}
+          >
+            <span className="tab-number">03</span>
+            <span className="tab-label">Works</span>
+          </button>
+        </nav>
+
+        {/* プロフィール情報 */}
+        <div className="profile-info">
+          <p>I'm Honoka Sakamoto,</p>
+          <p>Designer based in Japan.</p>
+          <p className="greeting">Thank you</p>
+          <p>for visiting my portfolio.</p>
+          <p className="email">hosaka0x0@gmail.com</p>
+        </div>
+
+        {/* テーマ切替ボタン */}
+        <div className="theme-toggles">
+        <div className="toggle-row">
+          <button
+            className={`theme-btn ${theme === 'light' ? 'active' : ''}`}
+            onClick={() => setTheme('light')}
+          >
+            <span>Light</span>
+          </button>
+          <button
+            className={`theme-btn ${theme === 'dark' ? 'active' : ''}`}
+            onClick={() => setTheme('dark')}
+          >
+            <span>Dark</span>
+          </button>
+        </div>
+</div>
+      </aside>
+  )
+}
+export default Sidebar
