@@ -1,4 +1,3 @@
-import { useState } from "react"
 function Sidebar({ activeTab, setActiveTab, theme, setTheme }) {
   return (
     <aside className="sidebar">
