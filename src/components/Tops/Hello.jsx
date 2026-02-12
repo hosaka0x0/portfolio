@@ -13,7 +13,7 @@ function Hello({activeTab,setActiveTab,theme,setTheme}){
                 <div className="hello-profile-body">
                   <div className="profile-image">
                     <img
-                      src="images/portfolio.png"
+                      src="images/portfolio.jpg"
                       alt="Profile"
                       onError={(e) => e.target.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'}
                     />
