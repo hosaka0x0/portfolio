@@ -1,11 +1,22 @@
+import { useEffect, useState } from "react"
+import { createClient } from "microcms-js-sdk"
+
 function Works({activeTab,setActiveTab,theme,setTheme}){
-    const works =[
-        {id:1,title:'プロジェクト1',image:'https://placehold.co/400x400',description:'testtest'},
-        {id:2,title:'プロジェクト2',image:'https://placehold.co/200x200',description:'testtest'},
-        {id:3,title:'プロジェクト3',image:'https://placehold.co/200x200',description:'testtest'},
-        {id:4,title:'プロジェクト4',image:'https://placehold.co/200x200',description:'testtest'},
-        {id:5,title:'プロジェクト5',image:'https://placehold.co/200x200',description:'testtest'}
-    ]
+    const [works,setWorks]= useState([]);
+    useEffect(()=>{
+        async function fetchWorksData() {
+        const client =createClient({
+            serviceDomain:import.meta.env.VITE_MICROCMS_SERVICE_DOMAIN,
+            apiKey:import.meta.env.VITE_MICROCMS_API_KEY,
+        })
+        const response = await client.getList({ endpoint:'works'});
+        console.log('取得したデータ:', response);
+        console.log('contentsの中身:', response.contents);
+        setWorks(response.contents);
+        }
+        fetchWorksData()
+    },[])
+
     return(
         <div className={`tab-content ${activeTab === 'works' ? 'active' : ''}`}>
           <div className="works-content">
@@ -17,13 +28,13 @@ function Works({activeTab,setActiveTab,theme,setTheme}){
             <div key={work.id} className="work-item">
                 <div className="work-text">
                     <div className="work-title">
-                        {work.title}
+                        {work.works_title}
                     </div>
                     <div className="work-discription">
-                        {work.description}
+                        {work.works_genre[0]}
                     </div>
                 </div>
-            <img src={work.image} className="work-img"/>
+            <img src={work.works_img.url} className="work-img"/>
             </div>
           ))}
           </div>
