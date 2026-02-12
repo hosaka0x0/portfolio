@@ -1,4 +1,4 @@
-      /* Portfolio Layout Styles */
+
       * {
         margin: 0;
         padding: 0;
@@ -12,7 +12,6 @@
         min-height: 100vh;
       }
 
-      /* メインコンテナ */
       .portfolio-container {
         display: flex;
         gap: 2rem;
@@ -22,7 +21,7 @@
         min-height: calc(100vh - 4rem);
       }
 
-      /* サイドバー */
+
       .sidebar {
         width: 240px;
         flex-shrink: 0;
@@ -31,7 +30,7 @@
         gap: 2rem;
       }
 
-      /* ナビゲーションタブ */
+
       .nav-tabs {
         display: flex;
         flex-direction: column;
@@ -70,11 +69,11 @@
         font-size: 1rem;
       }
 
-      /* プロフィール情報 */
+
       .profile-info {
         font-size: 0.875rem;
         line-height: 1.6;
-        color: #3d3027;
+        color: #3f4e5a;
       }
 
       .profile-info p {
@@ -91,7 +90,6 @@
         font-weight: 500;
       }
 
-      /* テーマ切替 */
       .theme-toggles {
         display: flex;
         flex-direction: column;
@@ -135,7 +133,7 @@
         font-size: 1.25rem;
       }
 
-      /* コンテンツエリア */
+
       .content-area {
         flex: 1;
         background: linear-gradient(
@@ -170,7 +168,6 @@
         }
       }
 
-      /* Hello コンテンツ */
       .hello-content {
         color: white;
         display: flex;
@@ -300,7 +297,6 @@
         transform: translateY(-4px);
       }
 
-      /* Works コンテンツ */
       .works-content {
         color: white;
         padding: 2rem;
@@ -311,7 +307,6 @@
         margin-bottom: 1rem;
       }
 
-      /* About タブのグリッドレイアウト */
       .about-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -323,7 +318,6 @@
         min-width: 0;
       }
 
-      /* Work Experience Timeline */
       .timeline-container {
         max-width: 700px;
       }
@@ -344,7 +338,6 @@
         position: relative;
       }
 
-      /* 破線 - カードの左端とテキスト開始位置の中間、カードの高さ中央から */
       .timeline-line {
         position: absolute;
         left: 0.75rem;
@@ -367,7 +360,7 @@
         top: -10px;
         width: 28px;
         height: 20px;
-        background: #3d3027;
+        background: #3f4e5a;
         border-radius: 6px;
         z-index: 3;
         display: flex;
@@ -382,7 +375,7 @@
         left: 8px;
         width: 8px;
         height: 8px;
-        background: #3d3027;
+        background: #3f4e5a;
         transform: rotate(45deg);
         border-radius: 0 0 2px 0;
       }
@@ -390,7 +383,7 @@
       .speech-icon-inner {
         width: 16px;
         height: 14px;
-        background: #3d3027;
+        background: #3f4e5a;
         border-radius: 3px;
         position: relative;
       }
@@ -404,7 +397,7 @@
         height: 0;
         border-left: 3px solid transparent;
         border-right: 3px solid transparent;
-        border-top: 3px solid #3d3027;
+        border-top: 3px solid #3f4e5a;
       }
 
       .card-header {
@@ -428,12 +421,12 @@
       .company-name {
         font-size: 1.25rem;
         font-weight: 600;
-        color: #3d3027;
+        color: #3f4e5a;
         flex: 1;
       }
 
       .badge {
-        background: #3d3027;
+        background: #3f4e5a;
         color: white;
         padding: 0.5rem 1.25rem;
         border-radius: 24px;
@@ -548,13 +541,13 @@
       .event-title {
         font-size: 1.125rem;
         font-weight: 600;
-        color: #3d3027;
+        color: #3f4e5a;
         flex: 1;
         line-height: 1.4;
       }
 
       .event-badge {
-        background: #3d3027;
+        background: #3f4e5a;
         color: white;
         padding: 0.5rem 1.25rem;
         border-radius: 24px;
@@ -630,7 +623,7 @@
         font-weight: 800;
         font-size: 12px;
         padding: 1px 8px;
-        color: #3d3027;
+        color: #3f4e5a;
       }
 
       .work-discription{
@@ -640,7 +633,7 @@
         font-weight: 800;
         font-size: 12px;
         padding: 1px 8px;
-        color: #3d3027;
+        color: #3f4e5a;
       }
       .work-item:hover .work-text {
         display: flex;
