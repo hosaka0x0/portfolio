@@ -1,750 +1,1003 @@
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-          "Noto Sans JP", sans-serif;
-        background: #f1f1f1;
-        min-height: 100vh;
-      }
-
-      .portfolio-container {
-        display: flex;
-        gap: 2rem;
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 2rem;
-        min-height: calc(100vh - 4rem);
-      }
-
-
-      .sidebar {
-        width: 240px;
-        flex-shrink: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-      }
-
-
-      .nav-tabs {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .nav-tab {
-        background: rgba(107, 137, 155, 0.3);
-        border: none;
-        border-radius: 12px;
-        padding: 1rem 1.25rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        color: #3f4e5a;
-        font-weight: 500;
-      }
-
-      .nav-tab:hover {
-        background: rgba(107, 137, 155, 0.5);
-      }
-
-      .nav-tab.active {
-        background: #6b859b;
-        color: white;
-      }
-
-      .tab-number {
-        font-size: 0.875rem;
-        opacity: 0.8;
-      }
-
-      .tab-label {
-        font-size: 1rem;
-      }
-
-
-      .profile-info {
-        font-size: 0.875rem;
-        line-height: 1.6;
-        color: #3f4e5a;
-      }
-
-      .profile-info p {
-        margin-bottom: 0.25rem;
-      }
-
-      .profile-info .greeting {
-        margin-top: 0.75rem;
-      }
-
-      .profile-info .email {
-        margin-top: 0.75rem;
-        color: #6b859b;
-        font-weight: 500;
-      }
-
-      .theme-toggles {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        margin-top: auto;
-      }
-
-      .toggle-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
-      }
-
-      .theme-btn {
-        background: rgba(255, 255, 255, 0.8);
-        border: 2px solid transparent;
-        border-radius: 10px;
-        padding: 0.75rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.25rem;
-        font-size: 0.75rem;
-        color: #5a6c7d;
-      }
-
-      .theme-btn:hover {
-        background: white;
-        border-color: #6b859b;
-      }
-
-      .theme-btn.active {
-        background: white;
-        border-color: #6b859b;
-        color: #6b859b;
-      }
-
-      .theme-btn .icon {
-        font-size: 1.25rem;
-      }
-
-
-      .content-area {
-        flex: 1;
-        background: linear-gradient(
-          135deg,
-          #6b859b 0%,
-          #7f98a9 50%,
-          #8d97b5 100%
-        );
-        border-radius: 20px;
-        position: relative;
-        overflow-y: auto;
-      }
-
-      .tab-content {
-        display: none;
-        height: 100%;
-      }
-
-      .tab-content.active {
-        display: block;
-        animation: fadeIn 0.4s ease;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .hello-content {
-        color: white;
-        display: flex;
-        justify-content: center; /* 水平方向の中央 */
-        align-items: center; /* 垂直方向の中央 */
-        height: 100%; /* 親要素の高さいっぱい */
-      }
-
-      .bento-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-      }
-
-      .bento-card {
-        background: rgba(255, 255, 255, 0.15);
-        border-radius: 20px;
-        padding: 1.5rem;
-        }
-
-      .bento-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 12px;
-        }
-
-      .bento-card-2x2 {
-        grid-column: span 2;
-        grid-row: span 2;
-      }
-
-      .bento-card-2x1 {
-        grid-column: span 2;
-      }
-
-      .bento-card-1x1 {
-        /* デフォルトサイズ */
-      }
-
-      .hello-main {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        width: 100%;
-        max-width: 900px;
-        padding: 2rem;
-      }
-
-
-      .hello-profile-section {
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 20px;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-      }
-
-      .hello-profile-header {
-        text-align: center;
-      }
-
-      .hello-profile-header h2 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-        font-weight: 700;
-      }
-
-      .hello-profile-header .subtitle {
-        font-size: 1.125rem;
-        opacity: 0.9;
-      }
-
-      .hello-profile-body {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-        width: 100%;
-        max-width: 800px;
-      }
-
-      .profile-image {
-        width: 140px;
-        height: 140px;
-        border-radius: 50%;
-        overflow: hidden;
-        border: 4px solid white;
-        flex-shrink: 0;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      }
-
-      .profile-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .social-links-compact {
-        flex: 1;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.75rem;
-      }
-
-      .social-link-compact {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        color: white;
-        text-decoration: none;
-        font-size: 0.9375rem;
-        transition: all 0.3s ease;
-        padding: 0.75rem 1rem;
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.15);
-      }
-
-      .social-link-compact:hover {
-        background: rgba(255, 255, 255, 0.25);
-        transform: translateX(4px);
-      }
-
-      .social-link-compact svg {
-        flex-shrink: 0;
-        width: 20px;
-        height: 20px;
-      }
-
-      /* My Daily セクション（Hello内） */
-      .hello-daily-section {
-        background: rgba(255, 255, 255, 0.15);
-        border-radius: 20px;
-        padding: 2rem;
-      }
-
-      .hello-daily-section h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-        text-align: center;
-      }
-
-      .daily-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-      }
-
-      .daily-card {
-        aspect-ratio: 1;
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 12px;
-        transition: all 0.3s ease;
-      }
-
-      .daily-card:hover {
-        background: rgba(255, 255, 255, 0.3);
-        transform: translateY(-4px);
-      }
-
-      .works-content {
-        color: white;
-        padding: 2rem;
-      }
-
-      .works-content h1 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-      }
-
-      .about-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        padding: 2rem;
-      }
-
-      .about-section {
-        min-width: 0;
-      }
-
-      .timeline-container {
-        max-width: 700px;
-      }
-
-      .timeline-item {
-        margin-bottom: 2rem;
-        position: relative;
-      }
-
-      .timeline-period {
-        font-size: 1rem;
-        color: white;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-      }
-
-      .card-wrapper {
-        position: relative;
-      }
-
-      .timeline-line {
-        position: absolute;
-        left: 0.75rem;
-        top: 50%;
-        width: 3px;
-        bottom: 0;
-        border-left: 3px dashed rgba(255, 255, 255, 0.5);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-      }
-
-      .card-wrapper.expanded .timeline-line {
-        opacity: 1;
-      }
-
-      .speech-icon {
-        position: absolute;
-        left: 8px;
-        top: -10px;
-        width: 28px;
-        height: 20px;
-        background: #3f4e5a;
-        border-radius: 6px;
-        z-index: 3;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .speech-icon::after {
-        content: "";
-        position: absolute;
-        bottom: -4px;
-        left: 8px;
-        width: 8px;
-        height: 8px;
-        background: #3f4e5a;
-        transform: rotate(45deg);
-        border-radius: 0 0 2px 0;
-      }
-
-      .speech-icon-inner {
-        width: 16px;
-        height: 14px;
-        background: #3f4e5a;
-        border-radius: 3px;
-        position: relative;
-      }
-
-      .speech-icon-inner::before {
-        content: "";
-        position: absolute;
-        bottom: -2px;
-        left: 3px;
-        width: 0;
-        height: 0;
-        border-left: 3px solid transparent;
-        border-right: 3px solid transparent;
-        border-top: 3px solid #3f4e5a;
-      }
-
-      .card-header {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 20px;
-        padding: 1.25rem 1.5rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      .card-header:hover {
-        background: white;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      }
-
-      .company-name {
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: #3f4e5a;
-        flex: 1;
-      }
-
-      .badge {
-        background: #3f4e5a;
-        color: white;
-        padding: 0.5rem 1.25rem;
-        border-radius: 24px;
-        font-size: 0.875rem;
-        font-weight: 500;
-      }
-
-      .card-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease, padding 0.4s ease;
-        padding: 0 1.5rem;
-      }
-
-      .card-content.active {
-        max-height: 500px;
-        padding: 1.5rem 1.5rem 1rem;
-      }
-
-      .role-title {
-        font-size: 1rem;
-        color: white;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-      }
-
-      .description {
-        font-size: 0.875rem;
-        color: rgba(255, 255, 255, 0.9);
-        line-height: 1.7;
-        margin-bottom: 0.75rem;
-      }
-
-      .links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-      }
-
-      .link-item {
-        font-size: 0.8125rem;
-        color: rgba(255, 255, 255, 0.85);
-        text-decoration: none;
-        word-break: break-all;
-      }
-
-      .link-item::before {
-        content: "・";
-        margin-right: 0.25rem;
-      }
-
-      .link-item:hover {
-        color: white;
-        text-decoration: underline;
-      }
-
-      /* Education & Awards Timeline */
-      .event-timeline-container {
-        max-width: 700px;
-      }
-
-      .event-timeline-item {
-        margin-bottom: 2rem;
-        position: relative;
-      }
-
-      .event-date {
-        font-size: 1rem;
-        color: white;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-      }
-
-      .event-card-wrapper {
-        position: relative;
-      }
-
-      .event-timeline-line {
-        position: absolute;
-        left: 0.75rem;
-        top: 50%;
-        width: 3px;
-        bottom: 0;
-        border-left: 3px dashed rgba(255, 255, 255, 0.5);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-      }
-
-      .event-card-wrapper.expanded .event-timeline-line {
-        opacity: 1;
-      }
-
-      .event-card-header {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 20px;
-        padding: 1.25rem 1.5rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      .event-card-header:hover {
-        background: white;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      }
-
-      .event-title {
-        font-size: 1.125rem;
-        font-weight: 600;
-        color: #3f4e5a;
-        flex: 1;
-        line-height: 1.4;
-      }
-
-      .event-badge {
-        background: #3f4e5a;
-        color: white;
-        padding: 0.5rem 1.25rem;
-        border-radius: 24px;
-        font-size: 0.875rem;
-        font-weight: 500;
-      }
-
-      .event-card-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease, padding 0.4s ease;
-        padding: 0 1.5rem;
-      }
-
-      .event-card-content.active {
-        max-height: 500px;
-        padding: 1.5rem 1.5rem 1rem;
-      }
-
-      .event-description {
-        font-size: 0.875rem;
-        color: rgba(255, 255, 255, 0.9);
-        line-height: 1.7;
-      }
-
-      .works-grid{
-        display: grid;
-        grid-template-columns: repeat(3,1fr);
-        gap:1rem;
-        padding: 2rem;
-      }
-
-
-      .work-item{
-        background: rgba(255, 255, 255, 0.25);
-        border-radius: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
-        aspect-ratio: 1/1;
-        position: relative;
-        overflow: hidden;
-
-      }
-
-      .work-img:hover{
-        height: 90%;
-        width: 90%;
-        border-radius: 20px;
-        transform:translateY(10px);
-      }
-
-      .work-img{
-        border-radius: 20px;
-        height: 100%;
-        width: 100%;
-        transition: 0.4s ease;
-      }
-      .work-text {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        display: none; 
-        padding:10px 10px 10px 10px;
-      }
-      
-      .work-title{
-        margin-right: auto;
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 20px;
-        font-weight: 800;
-        font-size: 12px;
-        padding: 1px 8px;
-        color: #3f4e5a;
-      }
-
-      .work-discription{
-        justify-content: right;
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 20px;
-        font-weight: 800;
-        font-size: 12px;
-        padding: 1px 8px;
-        color: #3f4e5a;
-      }
-      .work-item:hover .work-text {
-        display: flex;
-      }
-
-
-      /* レスポンシブ */
-      @media (max-width: 1024px) {
-        .portfolio-container {
-          flex-direction: column;
-        }
-
-        .sidebar {
-          width: 100%;
-        }
-
-        .nav-tabs {
-          flex-direction: row;
-        }
-
-        .theme-toggles {
-          flex-direction: row;
-        }
-
-        .about-grid {
-          grid-template-columns: 1fr;
-          gap: 2rem;
-        }
-
-        .hello-profile-body {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .social-links-compact {
-          width: 100%;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .portfolio-container {
-          padding: 1rem;
-        }
-
-        .content-area {
-          padding: 1.5rem;
-        }
-
-        .daily-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .social-links-compact {
-          grid-template-columns: 1fr;
-        }
-
-        .profile-image {
-          width: 120px;
-          height: 120px;
-        }
-
-        .hello-profile-section {
-          padding: 1.5rem;
-        }
-
-        .hello-daily-section {
-          padding: 1.5rem;
-        }
-
-        .works-grid{
-          grid-template-columns: 1fr;
-          gap:2rem;
-        }
-
-        .works-content h1{
-          text-align: center;
-        }
-
-        .works-content p{
-          text-align: center;
-        }
-      }
+/* ==========================================================================
+   PORTFOLIO STYLES - ORGANIZED & MAINTAINABLE CSS
+   ========================================================================== */
+
+/* ==========================================================================
+   1. DESIGN TOKENS (一元管理)
+   ========================================================================== */
+:root {
+  /* Colors */
+  --c-bg-body:   #f1f1f1;
+  --c-bg-card:   #dcdcdc;
+  --c-text-main: #3f4e5a;
+  --c-accent:    #6b859b;
+  --c-white:     #ffffff;
+  --c-white-tsp: rgba(255, 255, 255, 0.3);
+  
+  /* Gradients */
+  --bg-gradient: linear-gradient(135deg, #6b859b 0%, #7f98a9 50%, #8d97b5 100%);
+  
+  /* Sizes */
+  --sidebar-w: 240px;
+  
+  /* Spacing */
+  --sp-xs:  0.25rem;
+  --sp-sm:  0.5rem;
+  --sp-md:  1rem;
+  --sp-lg:  1.5rem;
+  --sp-xl:  2rem;
+  --sp-xxl: 3rem;
+  --grid-gap:  20px;
+  --grid-gap-mobile: 10px;
+  
+  /* Border Radius */
+  --radius-L: 20px;
+  --radius-M: 10px;
+  --radius-S: 6px;
+  
+  /* Transitions */
+  --transition-fast:   0.3s ease;
+  --transition-smooth: 0.4s ease;
+}
+
+/* ==========================================================================
+   2. RESET & BASE STYLES
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif;
+  background: var(--c-bg-body);
+  color: var(--c-text-main);
+  min-height: 100vh;
+  display: block;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   3. MAIN LAYOUT
+   ========================================================================== */
+.portfolio-container {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  gap: 40px;
+  width: 94%;
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 60px 0;
+  min-height: 100vh;
+  align-items: start;
+}
+
+/* ==========================================================================
+   4. SIDEBAR SECTION
+   ========================================================================== */
+
+/* --- Sidebar Container --- */
+.sidebar {
+  position: sticky;
+  top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: auto;
+}
+
+/* --- Navigation Tabs --- */
+.nav-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-tab {
+  background: rgba(107, 137, 155, 0.3);
+  border: none;
+  border-radius: var(--radius-S);
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--c-text-main);
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.nav-tab:hover,
+.nav-tab.active {
+  background: var(--c-accent);
+  color: var(--c-white);
+}
+
+.tab-number {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+.tab-label {
+  font-size: 1rem;
+}
+
+/* --- Profile Info --- */
+.profile-info {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #3f4e5a;
+}
+
+.profile-info p {
+  margin-bottom: 0.25rem;
+}
+
+.profile-info .greeting {
+  margin-top: 0.75rem;
+}
+
+.profile-info .email {
+  margin-top: 0.75rem;
+  color: #6b859b;
+  font-weight: 500;
+}
+
+/* --- Theme Toggles --- */
+.theme-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.toggle-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.theme-btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: #5a6c7d;
+}
+
+.theme-btn:hover,
+.theme-btn.active {
+  background: var(--c-white);
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+}
+
+/* ==========================================================================
+   5. CONTENT AREA
+   ========================================================================== */
+.content-area {
+  background: var(--bg-gradient);
+  border-radius: var(--radius-M);
+  padding: 40px;
+  height: auto;
+  min-height: 752px;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* --- Tab Content --- */
+.tab-content {
+  display: none;
+  width: 100%;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn var(--transition-smooth);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hello-main,
+.hello-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   6. BENTO GRID SYSTEM
+   ========================================================================== */
+
+/* --- Grid Container --- */
+.bento-grid {
+  display: grid;
+  gap: var(--grid-gap);
+  width: 100%;
+  margin: 0 auto;
+  grid-template-columns: repeat(8, 1fr);
+  grid-auto-rows: auto;
+  max-width: 1200px;
+  grid-template-areas:
+    "icon icon works works works works sns3 sns4"
+    "icon icon works works works works sns1 sns2"
+    "prof prof diary diary map  map  map  map"
+    "abou abou diary diary map  map  map  map"
+    "abou abou diary diary time time  regi regi";
+}
+
+/* --- Card Base Styles --- */
+.bento-card {
+  background-color: var(--c-bg-card);
+  border-radius: var(--radius-L);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* --- Grid Area Assignments --- */
+.card-icon    { grid-area: icon; }
+.card-works   { grid-area: works; }
+.card-sns:nth-of-type(1) { grid-area: sns1; }
+.card-sns:nth-of-type(2) { grid-area: sns2; }
+.card-sns:nth-of-type(3) { grid-area: sns3; }
+.card-sns:nth-of-type(4) { grid-area: sns4; }
+.card-profile { grid-area: prof; }
+.card-diary   { grid-area: diary; }
+.card-map     { grid-area: map; }
+.card-about   { grid-area: abou; }
+.card-time    { grid-area: time; }
+.card-region  { grid-area: regi; }
+
+/* --- PC Layout: Aspect Ratios (Drivers & Followers) --- */
+/* Drivers: 行の高さを確定させるカード */
+.card-sns {
+  aspect-ratio: 1/1;
+}
+
+.card-profile {
+  aspect-ratio: 2/1;
+}
+
+.card-map {
+  aspect-ratio: 2/1;
+}
+
+.card-time,
+.card-region {
+  aspect-ratio: 2/1;
+}
+
+/* Followers: 基準に合わせて伸縮するカード */
+.card-icon,
+.card-works,
+.card-about,
+.card-diary {
+  aspect-ratio: auto;
+  height: 100%;
+}
+
+/* ==========================================================================
+   7. PROFILE SECTION
+   ========================================================================== */
+
+.hello-profile-section {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-M);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  height: 100%;
+}
+
+.hello-profile-header {
+  text-align: center;
+}
+
+.hello-profile-header h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.hello-profile-header .subtitle {
+  font-size: 1.125rem;
+  opacity: 0.9;
+}
+
+.hello-profile-body {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.profile-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--c-white);
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.social-links-compact {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.social-link-compact {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--c-white);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  transition: all var(--transition-fast);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-S);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.social-link-compact:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(4px);
+}
+
+.social-link-compact svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+/* ==========================================================================
+   8. DAILY SECTION
+   ========================================================================== */
+
+.hello-daily-section {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-M);
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+}
+
+.hello-daily-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.daily-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.daily-card {
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-S);
+  transition: all var(--transition-fast);
+}
+
+.daily-card:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-4px);
+}
+
+/* ==========================================================================
+   9. WORKS SECTION
+   ========================================================================== */
+
+.works-content {
+  color: var(--c-white);
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+}
+
+.works-content h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.work-item {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-M);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  aspect-ratio: 1/1;
+  position: relative;
+  overflow: hidden;
+}
+
+.work-img {
+  border-radius: var(--radius-M);
+  height: 100%;
+  width: 100%;
+  transition: var(--transition-smooth);
+}
+
+.work-item:hover .work-img {
+  height: 90%;
+  width: 90%;
+  transform: translateY(10px);
+}
+
+.work-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+  padding: 10px;
+}
+
+.work-item:hover .work-text {
+  display: flex;
+}
+
+.work-title,
+.work-discription {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-M);
+  font-weight: 800;
+  font-size: 12px;
+  padding: 1px 8px;
+  color: var(--c-text-main);
+}
+
+.work-title {
+  margin-right: auto;
+}
+
+.work-discription {
+  justify-content: right;
+}
+
+.work-title {
+  margin-right: auto;
+}
+
+.work-description {
+  justify-content: right;
+}
+
+/* ==========================================================================
+   10. ABOUT & TIMELINE SECTION
+   ========================================================================== */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 2rem;
+  width: 100%;
+  height: 100%;
+}
+
+.about-section {
+  min-width: 0;
+}
+
+.timeline-container,
+.event-timeline-container {
+  max-width: 700px;
+}
+
+/* --- Timeline Item --- */
+.timeline-item,
+.event-timeline-item {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.timeline-period,
+.event-date {
+  font-size: 1rem;
+  color: var(--c-white);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* --- Card Wrapper --- */
+.card-wrapper,
+.event-card-wrapper {
+  position: relative;
+}
+
+/* --- Timeline Line --- */
+.timeline-line,
+.event-timeline-line {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  width: 3px;
+  bottom: 0;
+  border-left: 3px dashed rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  pointer-events: none;
+}
+
+.card-wrapper.expanded .timeline-line,
+.event-card-wrapper.expanded .event-timeline-line {
+  opacity: 1;
+}
+
+/* --- Speech Icon --- */
+.speech-icon {
+  position: absolute;
+  left: 8px;
+  top: -10px;
+  width: 28px;
+  height: 20px;
+  background: var(--c-text-main);
+  border-radius: 6px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.speech-icon::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 8px;
+  width: 8px;
+  height: 8px;
+  background: var(--c-text-main);
+  transform: rotate(45deg);
+  border-radius: 0 0 2px 0;
+}
+
+.speech-icon-inner {
+  width: 16px;
+  height: 14px;
+  background: var(--c-text-main);
+  border-radius: 3px;
+  position: relative;
+}
+
+.speech-icon-inner::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 3px;
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 3px solid var(--c-text-main);
+}
+
+/* --- Card Header --- */
+.card-header,
+.event-card-header {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-M);
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header:hover,
+.event-card-header:hover {
+  background: var(--c-white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Company/Title Info --- */
+.company-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--c-text-main);
+  flex: 1;
+}
+
+.event-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--c-text-main);
+  flex: 1;
+  line-height: 1.4;
+}
+
+.badge,
+.event-badge {
+  background: var(--c-text-main);
+  color: var(--c-white);
+  padding: 0.5rem 1.25rem;
+  border-radius: 24px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* --- Card Content --- */
+.card-content,
+.event-card-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-smooth), padding var(--transition-smooth);
+  padding: 0 1.5rem;
+}
+
+.card-content.active,
+.event-card-content.active {
+  max-height: 500px;
+  padding: 1.5rem 1.5rem 1rem;
+}
+
+/* --- Content Text --- */
+.role-title {
+  font-size: 1rem;
+  color: var(--c-white);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.description,
+.event-description {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
+
+/* --- Links --- */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.link-item {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.link-item::before {
+  content: "・";
+  margin-right: 0.25rem;
+}
+
+.link-item:hover {
+  color: var(--c-white);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   11. RESPONSIVE - TABLET (max-width: 1200px)
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .portfolio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    padding: 60px 0;
+    gap: 40px;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-width: 800px;
+    position: static;
+    background: #eeeff1;
+    border-radius: var(--radius-M);
+    padding: 30px;
+  }
+
+  .nav-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .nav-tab {
+    justify-content: center;
+    background: #cdd2d6;
+    padding: 12px;
+  }
+
+  .nav-tab.active {
+    background: #546678;
+  }
+
+  .theme-toggles {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .content-area {
+    width: 100%;
+    max-width: 800px;
+    min-height: 0;
+    padding: 40px;
+  }
+
+  /* --- Bento Grid Tablet --- */
+  .bento-grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: auto;
+    grid-template-areas:
+      "icon icon sns1 sns2 sns3 sns4"
+      "icon icon prof prof prof prof"
+      "abou abou works works works works"
+      "abou abou works works works works"
+      "diary diary map  map  map  map"
+      "diary diary map  map  map  map"
+      "diary diary time time regi regi";
+  }
+
+  /* Drivers (Tablet) */
+  .card-sns {
+    aspect-ratio: 1/1;
+  }
+
+  .card-profile {
+    aspect-ratio: 4/1;
+  }
+
+  .card-works {
+    aspect-ratio: 2/1;
+  }
+
+  .card-map {
+    aspect-ratio: 2/1;
+  }
+
+  .card-time,
+  .card-region {
+    aspect-ratio: 2/1;
+  }
+
+  /* Followers (Tablet) */
+  .card-icon {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+
+  .card-about {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+
+  .card-diary {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+
+  /* Content adjustments */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hello-profile-body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-links-compact {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   12. RESPONSIVE - MOBILE (max-width: 768px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .portfolio-container {
+    width: 92%;
+    padding: 40px 0;
+    gap: 30px;
+  }
+
+  .sidebar,
+  .content-area {
+    width: 100%;
+    max-width: 500px;
+    padding: 25px;
+  }
+
+  .nav-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .nav-tab {
+    padding: 10px 0;
+    font-size: 0.85rem;
+    justify-content: center;
+  }
+
+  .content-area {
+    min-height: 0;
+  }
+
+  /* --- Bento Grid Mobile --- */
+  .bento-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--grid-gap-mobile);
+    grid-template-areas:
+      "icon icon abou abou"
+      "icon icon abou abou"
+      "sns1 sns2 sns3 sns4"
+      "prof prof prof prof"
+      "works works works works"
+      "works works works works"
+      "diary diary diary diary"
+      "diary diary diary diary"
+      "time time regi regi"
+      "map  map  map  map"
+      "map  map  map  map";
+  }
+
+  /* Mobile Drivers */
+  .card-sns {
+    aspect-ratio: 1/1;
+  }
+
+  .card-profile {
+    aspect-ratio: 4/1;
+  }
+
+  .card-works {
+    aspect-ratio: 2/1;
+  }
+
+  .card-map {
+    aspect-ratio: 2/1;
+  }
+
+  .card-time,
+  .card-region {
+    aspect-ratio: 2/1;
+  }
+
+  /* Mobile Followers */
+  .card-icon {
+    aspect-ratio: 1/1;
+    height: 100%;
+  }
+
+  .card-about {
+    aspect-ratio: 1/1;
+    height: 100%;
+  }
+
+  .card-diary {
+    aspect-ratio: 2/1;
+    height: 100%;
+  }
+
+  /* Mobile Content */
+  .daily-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .social-links-compact {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hello-profile-section,
+  .hello-daily-section {
+    padding: 1.5rem;
+  }
+
+  .works-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .works-content h1 {
+    text-align: center;
+  }
+
+  .works-content p {
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   13. RESPONSIVE - SMALL (max-width: 640px)
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  .daily-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .social-links-compact {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hello-profile-section,
+  .hello-daily-section {
+    padding: 1.5rem;
+  }
+
+  .works-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .works-content h1 {
+    text-align: center;
+  }
+
+  .works-content p {
+    text-align: center;
+  }
+}
