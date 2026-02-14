@@ -2,6 +2,7 @@ import IconCard from "../Cards/IconCard.jsx"
 import NameCard from "../Cards/NameCard.jsx"
 import JobCard from "../Cards/JobCard.jsx"
 import SNSCard from "../Cards/SNSCard.jsx"
+
 function Hello({activeTab,setActiveTab,theme,setTheme}){
 
     return(
@@ -9,7 +10,7 @@ function Hello({activeTab,setActiveTab,theme,setTheme}){
           <div className="hello-content">
             <div className="hello-main">
               <div className="bento-grid">
-                <div className="bento-card card-icon">アイコン</div>
+                <div className="bento-card card-icon"><IconCard/></div>
                 <div className="bento-card card-works">Works</div>
                 
                 <div className="bento-card card-sns">SNS 1</div>

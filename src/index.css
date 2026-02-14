@@ -1,14 +1,14 @@
 /* ==========================================================================
-   PORTFOLIO STYLES - ORGANIZED & MAINTAINABLE CSS
+   PORTFOLIO STYLES - CLEAN & READABLE
    ========================================================================== */
 
 /* ==========================================================================
-   1. DESIGN TOKENS (一元管理)
+   1. DESIGN TOKENS
    ========================================================================== */
 :root {
   /* Colors */
   --c-bg-body:   #f1f1f1;
-  --c-bg-card:   #dcdcdc;
+  --c-bg-card:   #f1f1f1;
   --c-text-main: #3f4e5a;
   --c-accent:    #6b859b;
   --c-white:     #ffffff;
@@ -17,31 +17,23 @@
   /* Gradients */
   --bg-gradient: linear-gradient(135deg, #6b859b 0%, #7f98a9 50%, #8d97b5 100%);
   
-  /* Sizes */
+  /* Layout */
   --sidebar-w: 240px;
-  
-  /* Spacing */
-  --sp-xs:  0.25rem;
-  --sp-sm:  0.5rem;
-  --sp-md:  1rem;
-  --sp-lg:  1.5rem;
-  --sp-xl:  2rem;
-  --sp-xxl: 3rem;
-  --grid-gap:  20px;
-  --grid-gap-mobile: 10px;
+  --grid-gap: 20px;
+  --grid-gap-mobile: 12px;
   
   /* Border Radius */
-  --radius-L: 20px;
-  --radius-M: 10px;
-  --radius-S: 6px;
+  --radius-L: 18px;
+  --radius-M: 12px;
+  --radius-S: 10px;
   
   /* Transitions */
-  --transition-fast:   0.3s ease;
+  --transition-fast: 0.3s ease;
   --transition-smooth: 0.4s ease;
 }
 
 /* ==========================================================================
-   2. RESET & BASE STYLES
+   2. BASE STYLES
    ========================================================================== */
 * {
   margin: 0;
@@ -54,30 +46,29 @@ body {
   background: var(--c-bg-body);
   color: var(--c-text-main);
   min-height: 100vh;
-  display: block;
   overflow-x: hidden;
 }
 
 /* ==========================================================================
    3. MAIN LAYOUT
    ========================================================================== */
+
 .portfolio-container {
   display: grid;
   grid-template-columns: var(--sidebar-w) 1fr;
   gap: 40px;
-  width: 94%;
-  max-width: 1680px;
+  width: 100%;
+  max-width: 1920px;
   margin: 0 auto;
-  padding: 60px 0;
+  padding: 60px 40px;
   min-height: 100vh;
   align-items: start;
 }
 
 /* ==========================================================================
-   4. SIDEBAR SECTION
+   4. SIDEBAR
    ========================================================================== */
 
-/* --- Sidebar Container --- */
 .sidebar {
   position: sticky;
   top: 60px;
@@ -87,7 +78,7 @@ body {
   height: auto;
 }
 
-/* --- Navigation Tabs --- */
+/* Navigation Tabs */
 .nav-tabs {
   display: flex;
   flex-direction: column;
@@ -95,7 +86,7 @@ body {
 }
 
 .nav-tab {
-  background: rgba(107, 137, 155, 0.3);
+  background: #f1f1f1;
   border: none;
   border-radius: var(--radius-S);
   padding: 1rem 1.25rem;
@@ -123,7 +114,7 @@ body {
   font-size: 1rem;
 }
 
-/* --- Profile Info --- */
+/* Profile Info */
 .profile-info {
   font-size: 0.875rem;
   line-height: 1.6;
@@ -134,17 +125,17 @@ body {
   margin-bottom: 0.25rem;
 }
 
-.profile-info .greeting {
+.profile-info .greeting,
+.profile-info .email {
   margin-top: 0.75rem;
 }
 
 .profile-info .email {
-  margin-top: 0.75rem;
   color: #6b859b;
   font-weight: 500;
 }
 
-/* --- Theme Toggles --- */
+/* Theme Toggles */
 .theme-toggles {
   display: flex;
   flex-direction: column;
@@ -183,6 +174,7 @@ body {
 /* ==========================================================================
    5. CONTENT AREA
    ========================================================================== */
+
 .content-area {
   background: var(--bg-gradient);
   border-radius: var(--radius-M);
@@ -195,7 +187,6 @@ body {
   align-items: flex-start;
 }
 
-/* --- Tab Content --- */
 .tab-content {
   display: none;
   width: 100%;
@@ -228,7 +219,6 @@ body {
    6. BENTO GRID SYSTEM
    ========================================================================== */
 
-/* --- Grid Container --- */
 .bento-grid {
   display: grid;
   gap: var(--grid-gap);
@@ -236,7 +226,6 @@ body {
   margin: 0 auto;
   grid-template-columns: repeat(8, 1fr);
   grid-auto-rows: auto;
-  max-width: 1200px;
   grid-template-areas:
     "icon icon works works works works sns3 sns4"
     "icon icon works works works works sns1 sns2"
@@ -245,7 +234,6 @@ body {
     "abou abou diary diary time time  regi regi";
 }
 
-/* --- Card Base Styles --- */
 .bento-card {
   background-color: var(--c-bg-card);
   border-radius: var(--radius-L);
@@ -257,8 +245,15 @@ body {
   position: relative;
 }
 
-/* --- Grid Area Assignments --- */
+/* Grid Area Assignments */
 .card-icon    { grid-area: icon; }
+
+.card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* 画像全体を表示 */
+}
+
 .card-works   { grid-area: works; }
 .card-sns:nth-of-type(1) { grid-area: sns1; }
 .card-sns:nth-of-type(2) { grid-area: sns2; }
@@ -271,8 +266,7 @@ body {
 .card-time    { grid-area: time; }
 .card-region  { grid-area: regi; }
 
-/* --- PC Layout: Aspect Ratios (Drivers & Followers) --- */
-/* Drivers: 行の高さを確定させるカード */
+/* PC: Drivers (Height Base) */
 .card-sns {
   aspect-ratio: 1/1;
 }
@@ -290,7 +284,7 @@ body {
   aspect-ratio: 2/1;
 }
 
-/* Followers: 基準に合わせて伸縮するカード */
+/* PC: Followers (Flex to Parent Height) */
 .card-icon,
 .card-works,
 .card-about,
@@ -500,14 +494,6 @@ body {
   justify-content: right;
 }
 
-.work-title {
-  margin-right: auto;
-}
-
-.work-description {
-  justify-content: right;
-}
-
 /* ==========================================================================
    10. ABOUT & TIMELINE SECTION
    ========================================================================== */
@@ -530,7 +516,6 @@ body {
   max-width: 700px;
 }
 
-/* --- Timeline Item --- */
 .timeline-item,
 .event-timeline-item {
   margin-bottom: 2rem;
@@ -545,13 +530,11 @@ body {
   margin-bottom: 0.75rem;
 }
 
-/* --- Card Wrapper --- */
 .card-wrapper,
 .event-card-wrapper {
   position: relative;
 }
 
-/* --- Timeline Line --- */
 .timeline-line,
 .event-timeline-line {
   position: absolute;
@@ -570,7 +553,6 @@ body {
   opacity: 1;
 }
 
-/* --- Speech Icon --- */
 .speech-icon {
   position: absolute;
   left: 8px;
@@ -617,7 +599,6 @@ body {
   border-top: 3px solid var(--c-text-main);
 }
 
-/* --- Card Header --- */
 .card-header,
 .event-card-header {
   background: rgba(255, 255, 255, 0.95);
@@ -638,8 +619,8 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* --- Company/Title Info --- */
-.company-name {
+.company-name,
+.event-title {
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--c-text-main);
@@ -648,9 +629,6 @@ body {
 
 .event-title {
   font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--c-text-main);
-  flex: 1;
   line-height: 1.4;
 }
 
@@ -664,7 +642,6 @@ body {
   font-weight: 500;
 }
 
-/* --- Card Content --- */
 .card-content,
 .event-card-content {
   max-height: 0;
@@ -679,7 +656,6 @@ body {
   padding: 1.5rem 1.5rem 1rem;
 }
 
-/* --- Content Text --- */
 .role-title {
   font-size: 1rem;
   color: var(--c-white);
@@ -695,7 +671,6 @@ body {
   margin-bottom: 0.75rem;
 }
 
-/* --- Links --- */
 .links {
   display: flex;
   flex-direction: column;
@@ -720,7 +695,7 @@ body {
 }
 
 /* ==========================================================================
-   11. RESPONSIVE - TABLET (max-width: 1200px)
+   RESPONSIVE - TABLET (Max 1200px)
    ========================================================================== */
 
 @media (max-width: 1200px) {
@@ -728,8 +703,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90%;
-    padding: 60px 0;
+    width: 100%;
+    padding: 60px 40px;
     gap: 40px;
   }
 
@@ -737,7 +712,7 @@ body {
     width: 100%;
     max-width: 800px;
     position: static;
-    background: #eeeff1;
+    background: #f1f1f1;
     border-radius: var(--radius-M);
     padding: 30px;
   }
@@ -772,7 +747,7 @@ body {
     padding: 40px;
   }
 
-  /* --- Bento Grid Tablet --- */
+  /* Tablet: Bento Grid */
   .bento-grid {
     grid-template-columns: repeat(6, 1fr);
     grid-auto-rows: auto;
@@ -786,19 +761,28 @@ body {
       "diary diary time time regi regi";
   }
 
-  /* Drivers (Tablet) */
-  .card-sns {
-    aspect-ratio: 1/1;
+  /* Tablet: Icon Driver */
+  .card-icon {
+    aspect-ratio: 1/1 !important;
   }
 
+  /* Tablet: SNS & Profile Followers */
+  .card-sns,
   .card-profile {
-    aspect-ratio: 4/1;
+    aspect-ratio: auto;
+    height: 100%;
   }
 
+  /* Tablet: Works & About */
   .card-works {
-    aspect-ratio: 2/1;
+    aspect-ratio: auto;
   }
 
+  .card-about {
+    aspect-ratio: 1/1 !important;
+  }
+
+  /* Tablet: Map & Time/Region */
   .card-map {
     aspect-ratio: 2/1;
   }
@@ -808,23 +792,13 @@ body {
     aspect-ratio: 2/1;
   }
 
-  /* Followers (Tablet) */
-  .card-icon {
-    aspect-ratio: auto;
-    height: 100%;
-  }
-
-  .card-about {
-    aspect-ratio: auto;
-    height: 100%;
-  }
-
+  /* Tablet: Diary Follower */
   .card-diary {
     aspect-ratio: auto;
     height: 100%;
   }
 
-  /* Content adjustments */
+  /* Tablet: Internal Content */
   .about-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -841,13 +815,13 @@ body {
 }
 
 /* ==========================================================================
-   12. RESPONSIVE - MOBILE (max-width: 768px)
+   RESPONSIVE - MOBILE (Max 768px)
    ========================================================================== */
 
 @media (max-width: 768px) {
   .portfolio-container {
-    width: 92%;
-    padding: 40px 0;
+    width: 100%;
+    padding: 30px 20px;
     gap: 30px;
   }
 
@@ -870,13 +844,14 @@ body {
     padding: 10px 0;
     font-size: 0.85rem;
     justify-content: center;
+    gap: 0.3rem;
   }
 
   .content-area {
     min-height: 0;
   }
 
-  /* --- Bento Grid Mobile --- */
+  /* Mobile: Bento Grid */
   .bento-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: var(--grid-gap-mobile);
@@ -894,7 +869,12 @@ body {
       "map  map  map  map";
   }
 
-  /* Mobile Drivers */
+  /* Mobile: Card Ratios */
+  .card-icon,
+  .card-about {
+    aspect-ratio: 1/1 !important;
+  }
+
   .card-sns {
     aspect-ratio: 1/1;
   }
@@ -903,10 +883,8 @@ body {
     aspect-ratio: 4/1;
   }
 
-  .card-works {
-    aspect-ratio: 2/1;
-  }
-
+  .card-works,
+  .card-diary,
   .card-map {
     aspect-ratio: 2/1;
   }
@@ -916,23 +894,7 @@ body {
     aspect-ratio: 2/1;
   }
 
-  /* Mobile Followers */
-  .card-icon {
-    aspect-ratio: 1/1;
-    height: 100%;
-  }
-
-  .card-about {
-    aspect-ratio: 1/1;
-    height: 100%;
-  }
-
-  .card-diary {
-    aspect-ratio: 2/1;
-    height: 100%;
-  }
-
-  /* Mobile Content */
+  /* Mobile: Internal Content */
   .daily-grid {
     grid-template-columns: 1fr;
   }
@@ -956,48 +918,12 @@ body {
     gap: 2rem;
   }
 
-  .works-content h1 {
-    text-align: center;
-  }
-
+  .works-content h1,
   .works-content p {
     text-align: center;
   }
 }
 
 /* ==========================================================================
-   13. RESPONSIVE - SMALL (max-width: 640px)
+   END OF STYLES
    ========================================================================== */
-
-@media (max-width: 640px) {
-  .daily-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .social-links-compact {
-    grid-template-columns: 1fr;
-  }
-
-  .profile-image {
-    width: 120px;
-    height: 120px;
-  }
-
-  .hello-profile-section,
-  .hello-daily-section {
-    padding: 1.5rem;
-  }
-
-  .works-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .works-content h1 {
-    text-align: center;
-  }
-
-  .works-content p {
-    text-align: center;
-  }
-}
