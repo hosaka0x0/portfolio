@@ -2,7 +2,6 @@ import IconCard from "../Cards/IconCard.jsx"
 import NameCard from "../Cards/NameCard.jsx"
 import JobCard from "../Cards/JobCard.jsx"
 import SNSCard from "../Cards/SNSCard.jsx"
-import MapCard from "../Cards/MapCard.jsx"
 function Hello({activeTab,setActiveTab,theme,setTheme}){
 
     return(
