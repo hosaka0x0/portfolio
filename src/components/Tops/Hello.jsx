@@ -18,7 +18,7 @@ function Hello({activeTab,setActiveTab,theme,setTheme}){
                 <div className="bento-card card-sns">SNS 3</div>
                 <div className="bento-card card-sns">SNS 4</div>
 
-                <div className="bento-card card-profile">Profile (2x1)</div>
+                <div className="bento-card card-profile"><NameCard/></div>
                 <div className="bento-card card-diary">日記 (2x3)</div>
                 <div className="bento-card card-map">Map (4x2)</div>
                 <div className="bento-card card-about">About (2x2)</div>
