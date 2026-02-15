@@ -46,7 +46,7 @@ function NameCard(){
         split && split.revert();
         tl && tl.kill();
     };
-    }, [isLargeScreen]); 
+    }, []); 
 
     // テキスト分岐
     const content = isLargeScreen ? (
