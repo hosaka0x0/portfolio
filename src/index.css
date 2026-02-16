@@ -183,7 +183,7 @@ body {
   border-radius: var(--radius-M);
   padding: 40px;
   height: auto;
-  min-height: 752px;
+  min-height: auto;
   overflow: visible;
   display: flex;
   justify-content: center;
@@ -452,7 +452,7 @@ body {
 }
 
 .work-item {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 1);
   border-radius: var(--radius-M);
   display: flex;
   flex-direction: column;
@@ -482,7 +482,7 @@ body {
   left: 0;
   width: 100%;
   display: none;
-  padding: 10px;
+  padding: 6px;
 }
 
 .work-item:hover .work-text {
@@ -491,12 +491,12 @@ body {
 
 .work-title,
 .work-discription {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--c-accent);
   border-radius: var(--radius-M);
-  font-weight: 800;
+  font-weight: 600;
   font-size: 12px;
   padding: 1px 8px;
-  color: var(--c-text-main);
+  color: var(--c-white);
 }
 
 .work-title {

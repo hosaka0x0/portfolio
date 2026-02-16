@@ -11,7 +11,7 @@ function NameCard(){
     useEffect(() => {
         const handleResize = () => {
             const width = window.innerWidth;
-            setIsLargeScreen(width>=1200);  // ← 1200px以上の条件を書く
+            setIsLargeScreen(width>=1200);
         };
         
         handleResize();
@@ -21,32 +21,32 @@ function NameCard(){
 
     // GSAP
     useEffect(() => {
-    let split = SplitText.create(".name-card-text", {
-        type:"chars,words,lines"
-    });
+        let split = SplitText.create(".name-card-text", {
+            type:"chars,words,lines"
+        });
 
-    const tl = gsap.timeline({ repeat: -1 }); 
-    tl.from(split.chars, {
-        x: 150,
-        opacity: 0,
-        duration: 0.7,
-        ease: "power4",
-        stagger: 0.2
-    })
-    .to({}, { duration: 0.8 })
-    .to(split.chars, {
-        x: -150,
-        opacity: 0,
-        duration: 0.6,
-        ease: "power2",
-        stagger: 0.06
-    });
+        const tl = gsap.timeline({ repeat: -1 }); 
+        tl.from(split.chars, {
+            x: 150,
+            opacity: 0,
+            duration: 0.7,
+            ease: "power4",
+            stagger: 0.2
+        })
+        .to({}, { duration: 1 })
+        .to(split.chars, {
+            x: -150,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power2",
+            stagger: 0.06
+        });
 
-    return () => {
-        split && split.revert();
-        tl && tl.kill();
-    };
-    }, []); 
+        return () => {
+            split && split.revert();
+            tl && tl.kill();
+        };
+    }, [isLargeScreen]); // ← ここ！[] から [isLargeScreen] に
 
     // テキスト分岐
     const content = isLargeScreen ? (
@@ -56,7 +56,7 @@ function NameCard(){
     );
 
     return(
-        <div className="bento-card">
+        <div className="bento-card card-profile">
             {content}
         </div>
     )

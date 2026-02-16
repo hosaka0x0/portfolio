@@ -2,6 +2,7 @@ import IconCard from "../Cards/IconCard.jsx"
 import NameCard from "../Cards/NameCard.jsx"
 import JobCard from "../Cards/JobCard.jsx"
 import SNSCard from "../Cards/SNSCard.jsx"
+import MapCard from "../Cards/MapCard.jsx"
 
 function Hello({activeTab,setActiveTab,theme,setTheme}){
 
@@ -10,7 +11,7 @@ function Hello({activeTab,setActiveTab,theme,setTheme}){
           <div className="hello-content">
             <div className="hello-main">
               <div className="bento-grid">
-                <div className="bento-card card-icon"><IconCard/></div>
+                <IconCard/>
                 <div className="bento-card card-works">Works</div>
                 
                 <div className="bento-card card-sns">SNS 1</div>
@@ -18,9 +19,10 @@ function Hello({activeTab,setActiveTab,theme,setTheme}){
                 <div className="bento-card card-sns">SNS 3</div>
                 <div className="bento-card card-sns">SNS 4</div>
 
-                <div className="bento-card card-profile"><NameCard/></div>
+                <NameCard/>
+
                 <div className="bento-card card-diary">日記 (2x3)</div>
-                <div className="bento-card card-map">Map (4x2)</div>
+                <MapCard/>
                 <div className="bento-card card-about">About (2x2)</div>
                 
                 <div className="bento-card card-time">Time (1x2)</div>

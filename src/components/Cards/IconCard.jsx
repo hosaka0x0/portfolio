@@ -1,7 +1,7 @@
 function IconCard(){
     return(
     
-    <div className="bento-card bento-card-2x2">    
+    <div className="bento-card card-icon">    
         <img
             src="/portfolio/images/portfolio.jpg"
             alt="Profile"
