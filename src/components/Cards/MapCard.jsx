@@ -33,9 +33,9 @@ function MapCard() {
   map.current = new mapboxgl.Map({
     container: mapContainer.current,
     style: selectedStyle,
-    center: [139.745433, 35.658581],
-    zoom: 15.5,
-    pitch: 60,
+    center: [139.74633, 35.661581],
+    zoom: 14.5,
+    pitch: 70,
     interactive: false
   })
   
