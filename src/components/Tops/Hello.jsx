@@ -7,6 +7,7 @@ import MapCard from "../Cards/MapCard.jsx"
 import TimeCard from "../Cards/TimeCard.jsx"
 import gsap from "gsap"
 import CityCard from "../Cards/CityCard.jsx"
+import WorksCard from "../Cards/WorksCard.jsx"
 
 
 function Hello({activeTab,setActiveTab,theme,setTheme}){
@@ -33,8 +34,7 @@ function Hello({activeTab,setActiveTab,theme,setTheme}){
             <div className="hello-main">
               <div className="bento-grid">
                 <IconCard/>
-                <div className="bento-card card-works">Works</div>
-                
+                <WorksCard/>
                 <div className="bento-card card-sns">SNS 1</div>
                 <div className="bento-card card-sns">SNS 2</div>
                 <div className="bento-card card-sns">SNS 3</div>

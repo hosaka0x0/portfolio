@@ -35,23 +35,6 @@ function Sidebar({ activeTab, setActiveTab, theme, setTheme }) {
           <p className="email">hosaka0x0@gmail.com</p>
         </div>
 
-        {/* テーマ切替ボタン */}
-        <div className="theme-toggles">
-        <div className="toggle-row">
-          <button
-            className={`theme-btn ${theme === 'light' ? 'active' : ''}`}
-            onClick={() => setTheme('light')}
-          >
-            <span>Light</span>
-          </button>
-          <button
-            className={`theme-btn ${theme === 'dark' ? 'active' : ''}`}
-            onClick={() => setTheme('dark')}
-          >
-            <span>Dark</span>
-          </button>
-        </div>
-</div>
       </aside>
   )
 }
