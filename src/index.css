@@ -748,6 +748,14 @@ body {
   transition: var(--transition-fast);
 }
 
+.cityCardLabel{
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Oxanium', monospace;
+  letter-spacing: 0.05em;
+  color: var(--c-text-main);
+  transition: var(--transition-fast);
+}
 
 
 
@@ -1002,5 +1010,71 @@ body {
     text-align: center;
   }
   
+  .cityCardLabel{
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Oxanium', monospace;
+  letter-spacing: 0.05em;
+  color: var(--c-text-main);
+  transition: var(--transition-fast);
+}
+}
+
+@media (max-width: 425px){
+  .timeCardDisplay {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: 'Oxanium', monospace;
+  letter-spacing: 0.05em;
+  color: var(--c-text-main);
+  transition: var(--transition-fast);
+}
+
+.timeCardLabel {
+  color: var(--c-accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+  .cityCardLabel{
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Oxanium', monospace;
+  letter-spacing: 0.05em;
+  color: var(--c-text-main);
+  transition: var(--transition-fast);
+}
+
+}
+
+
+@media (max-width:375px) {
+  .bento-card h2.name-card-text {
+    text-align: center;
+    white-space: normal;  /* 改行を許可 */
+    font-size:1.5rem;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 345px){
+  .timeCardDisplay {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: 'Oxanium', monospace;
+  letter-spacing: 0.05em;
+  color: var(--c-text-main);
+  transition: var(--transition-fast);
+}
+
+.timeCardLabel {
+  color: var(--c-accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+
 
 }

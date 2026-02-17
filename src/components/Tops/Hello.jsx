@@ -6,6 +6,7 @@ import SNSCard from "../Cards/SNSCard.jsx"
 import MapCard from "../Cards/MapCard.jsx"
 import TimeCard from "../Cards/TimeCard.jsx"
 import gsap from "gsap"
+import CityCard from "../Cards/CityCard.jsx"
 
 
 function Hello({activeTab,setActiveTab,theme,setTheme}){
@@ -46,7 +47,7 @@ function Hello({activeTab,setActiveTab,theme,setTheme}){
                 <div className="bento-card card-about">About (2x2)</div>
                 
                 <TimeCard/>
-                <div className="bento-card card-region">地域 (1x2)</div>
+                <CityCard/>
               </div>
             </div>
           </div>
