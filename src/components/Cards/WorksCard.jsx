@@ -15,50 +15,58 @@ function WorksTop() {
             setWorks(response.contents)
         }
         fetchWorksData()
-    }, [])
+    }, [])  // ← []なので1回だけフェッチ
 
     useEffect(() => {
         if (!trackRef.current || works.length === 0) return
 
         const track = trackRef.current
-        const speedSeconds = 8
-        let pos = 0
-        let animationId
+        const images = track.querySelectorAll('img')
+        
+        // 全画像の読み込みを待つ
+        const imagePromises = Array.from(images).map(img => {
+            if (img.complete) return Promise.resolve()
+            return new Promise(resolve => {
+                img.onload = resolve
+                img.onerror = resolve
+            })
+        })
 
-        const marqueeWidth = track.scrollWidth / 2
+        Promise.all(imagePromises).then(() => {
+            const speedSeconds = 15
+            let pos = 0
+            let animationId
+            const marqueeWidth = track.scrollWidth / 2
 
-        function animate() {
-            pos -= marqueeWidth / (speedSeconds * 60)
-            if (pos <= -marqueeWidth) pos += marqueeWidth
-            track.style.transform = `translateX(${pos}px)`
+            function animate() {
+                pos -= marqueeWidth / (speedSeconds * 60)
+                if (pos <= -marqueeWidth) pos += marqueeWidth
+                track.style.transform = `translateX(${pos}px)`
+                animationId = requestAnimationFrame(animate)
+            }
+
             animationId = requestAnimationFrame(animate)
-        }
+        })
 
-        animationId = requestAnimationFrame(animate)
-        return () => cancelAnimationFrame(animationId)
+        return () => {
+            // クリーンアップ
+        }
     }, [works])
 
     return (
         <div className="bento-card card-works" style={{ padding: 0, overflow: 'hidden' }}>
             <div className="works-top-wrapper">
                 <div ref={trackRef} className="works-top-track">
-                    {works.length === 0 
-                        ? [1,2,3].map(i => (
-                            <div key={i} className="works-top-item works-top-skeleton" />
-                        ))
-                        : <>
-                            {works.map((work) => (
-                                <div key={work.id} className="works-top-item">
-                                    <img src={`${work.works_img.url}?w=400&h=400&fit=crop`} alt={work.works_title} />
-                                </div>
-                            ))}
-                            {works.map((work) => (
-                                <div key={`${work.id}-clone`} className="works-top-item">
-                                    <img src={`${work.works_img.url}?w=400&h=400&fit=crop`} alt={work.works_title} />
-                                </div>
-                            ))}
-                        </>
-                    }
+                    {works.map((work) => (
+                        <div key={work.id} className="works-top-item">
+                            <img src={`${work.works_img.url}?w=400&h=400&fit=crop`} alt={work.works_title} />
+                        </div>
+                    ))}
+                    {works.map((work) => (
+                        <div key={`${work.id}-clone`} className="works-top-item">
+                            <img src={`${work.works_img.url}?w=400&h=400&fit=crop`} alt={work.works_title} />
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
