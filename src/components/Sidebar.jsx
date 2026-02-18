@@ -29,7 +29,7 @@ function Sidebar({ activeTab, setActiveTab, theme, setTheme }) {
         {/* プロフィール情報 */}
         <div className="profile-info">
           <p>I'm Honoka Sakamoto,</p>
-          <p>Designer based in Japan.</p>
+          <p>Creater based in Japan.</p>
           <p className="greeting">Thank you</p>
           <p>for visiting my portfolio.</p>
           <p className="email">hosaka0x0@gmail.com</p>
