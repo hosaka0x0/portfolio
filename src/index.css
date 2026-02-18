@@ -11,11 +11,11 @@
 :root {
   /* Colors */
   --c-bg-body:   #f1f1f1;
-  --c-bg-card:   #f1f1f1;
+  --c-bg-card:   rgba(255, 255, 255, 0.55);
   --c-text-main: #3f4e5a;
   --c-accent:    #6b859b;
   --c-white:     #ffffff;
-  --c-white-tsp: rgba(255, 255, 255, 0.3);
+  --c-white-tsp: rgba(255, 255, 255, 0.55);
   
   /* Gradients */
   --bg-gradient: linear-gradient(135deg, #6b859b 0%, #7f98a9 50%, #8d97b5 100%);
@@ -246,6 +246,26 @@ body {
   justify-content: center;
   overflow: hidden;
   position: relative;
+  backdrop-filter: blur(20px);
+
+  /* ↓ 追加：ガラスの縁 */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  /* ↓ 変更：内側の光をちょっと強調 */
+  box-shadow: 
+    0 4px 24px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ↓ 追加：ホバーで浮かせる */
+.bento-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 
+    0 20px 48px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .bento-card h2{
@@ -285,7 +305,7 @@ body {
 }
 
 .card-profile {
-  aspect-ratio: 2/1;
+  aspect-ratio: 1.9/1;
 }
 
 .card-map,.card-works {
