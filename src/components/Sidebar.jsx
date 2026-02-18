@@ -10,18 +10,18 @@ function Sidebar({ activeTab, setActiveTab, theme, setTheme }) {
             <span className="tab-number">01</span>
             <span className="tab-label">Hello</span>
           </button>
-          <button
+          {/* <button
             className={`nav-tab ${activeTab === 'about' ? 'active' : ''}`}
             onClick={() => setActiveTab('about')}
           >
             <span className="tab-number">02</span>
             <span className="tab-label">About</span>
-          </button>
+          </button> */}
           <button
             className={`nav-tab ${activeTab === 'works' ? 'active' : ''}`}
             onClick={() => setActiveTab('works')}
           >
-            <span className="tab-number">03</span>
+            <span className="tab-number">02</span>
             <span className="tab-label">Works</span>
           </button>
         </nav>
