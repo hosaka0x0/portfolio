@@ -351,7 +351,8 @@ body {
    ========================================================================== */
 .works-content {
   color: var(--c-white);
-  padding: 2rem;
+  padding: 1rem;
+  padding-left: 2rem;
   width: 100%;
 }
 
