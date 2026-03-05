@@ -53,24 +53,24 @@ function WorksTop() {
         }
     }, [works])
 
-    return (
-        <div className="bento-card card-works" style={{ padding: 0, overflow: 'hidden' }}>
-            <div className="works-top-wrapper">
-                <div ref={trackRef} className="works-top-track">
-                    {works.map((work) => (
-                        <div key={work.id} className="works-top-item">
-                            <img src={`${work.works_img.url}?w=400&h=400&fit=crop`} alt={work.works_title} />
-                        </div>
-                    ))}
-                    {works.map((work) => (
-                        <div key={`${work.id}-clone`} className="works-top-item">
-                            <img src={`${work.works_img.url}?w=400&h=400&fit=crop`} alt={work.works_title} />
-                        </div>
-                    ))}
+        return (
+        <div className="bento-card card-works" style={{ padding: 0, overflow: 'hidden', position: 'relative' }}>
+            <div className="works-top-wrapper" style={{ position: 'absolute', inset: 0 }}>
+            <div ref={trackRef} className="works-top-track">
+                {works.map((work) => (
+                <div key={work.id} className="works-top-item">
+                    <img src={`${work.works_img.url}?w=400&h=400&fit=crop`} alt={work.works_title} />
                 </div>
+                ))}
+                {works.map((work) => (
+                <div key={`${work.id}-clone`} className="works-top-item">
+                    <img src={`${work.works_img.url}?w=400&h=400&fit=crop`} alt={work.works_title} />
+                </div>
+                ))}
+            </div>
             </div>
         </div>
-    )
+        )
 }
 
 export default WorksTop

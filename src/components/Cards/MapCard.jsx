@@ -13,48 +13,45 @@ function MapCard() {
   }
 
   useEffect(() => {
-  console.log('MapCard useEffect開始')
-  console.log('mapContainer.current:', mapContainer.current)
-  console.log('map.current:', map.current)
-  
-  if (map.current) {
-    console.log('既に初期化済み - スキップ')
-    return
-  }
+    if (map.current) return
 
-  console.log('✅ Mapbox初期化開始')
-  console.log('Access Token:', import.meta.env.VITE_MAPBOX_ACCESS_TOKEN ? 'あり' : 'なし')
-  
-  mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN
+    mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN
 
-  const selectedStyle = getStyleByTime()
-  console.log('選択されたスタイル:', selectedStyle)
+    map.current = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: getStyleByTime(),
+      center: [139.74633, 35.661581],
+      zoom: 14.5,
+      pitch: 70,
+      interactive: false
+    })
 
-  map.current = new mapboxgl.Map({
-    container: mapContainer.current,
-    style: selectedStyle,
-    center: [139.74633, 35.661581],
-    zoom: 14.5,
-    pitch: 70,
-    interactive: false
-  })
-  
-  console.log('✅ Map作成完了:', map.current)
-
-  return () => {
-    console.log('クリーンアップ実行')
-    if (map.current) {
-      map.current.remove()
-      map.current = null
+    return () => {
+      if (map.current) {
+        map.current.remove()
+        map.current = null
+      }
     }
-  }
-}, [])
+  }, [])
+
+useEffect(() => {
+    if (!mapContainer.current) return
+
+    const observer = new ResizeObserver(() => {
+      requestAnimationFrame(() => {        
+        if (map.current) map.current.resize()
+      })                                   
+    })
+
+    observer.observe(mapContainer.current)
+    return () => observer.disconnect()
+  }, [])
 
   return (
-  <div className="bento-card card-map" style={{ padding: 0, overflow: 'hidden' }}>
-    <div ref={mapContainer} style={{ width: '100%', height: '100%' }} />
-  </div>
-)
+    <div className="bento-card card-map" style={{ padding: 0, overflow: 'hidden', position: 'relative' }}>
+      <div ref={mapContainer} style={{ position: 'absolute', inset: 0 }} />
+    </div>
+  )
 }
 
 export default MapCard
