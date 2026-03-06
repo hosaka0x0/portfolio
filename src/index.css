@@ -1122,6 +1122,14 @@ body {
 .wd-rich-content blockquote { border-left: 3px solid var(--c-accent); padding-left: 16px; color: #8a9aaa; margin: 16px 0; }
 .wd-rich-content code { font-family: 'Space Mono', monospace; font-size: 0.8em; background: rgba(107,133,155,0.1); padding: 2px 6px; border-radius: 4px; }
 
+.wd-rich-content img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: var(--radius-M);
+  margin: 16px 0;
+}
+
 /* ==========================================================================
    DIARY DETAIL
    ========================================================================== */
