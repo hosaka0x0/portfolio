@@ -1129,7 +1129,7 @@ body {
   width: auto;
   height: auto;
   border-radius: var(--radius-M);
-  margin: 16px auto;
+  margin: 16px 0;
 }
 
 /* ==========================================================================
