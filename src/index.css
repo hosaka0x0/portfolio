@@ -1124,10 +1124,12 @@ body {
 
 .wd-rich-content img {
   width: 100%;
-  max-height: 500px;
-  object-fit: cover;
+  height: auto;
+  max-height: 600px;
+  object-fit: contain;
   border-radius: var(--radius-M);
   margin: 16px 0;
+  display: block;
 }
 
 /* ==========================================================================
