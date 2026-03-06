@@ -16,7 +16,7 @@ function App() {
   const [theme, setTheme] = useState('light')
 
   return (
-    <BrowserRouter basename="/portfolio">
+    <BrowserRouter basename="/">
       <div className="portfolio-container">
         <Sidebar
           activeTab={activeTab}
