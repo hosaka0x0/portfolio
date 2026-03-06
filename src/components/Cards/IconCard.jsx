@@ -3,7 +3,7 @@ function IconCard(){
     
     <div className="bento-card card-icon">    
         <img
-            src="/portfolio/images/portfolio.jpg"
+            src="/images/portfolio.jpg"
             alt="Profile"
             />
     </div>
