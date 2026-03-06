@@ -808,7 +808,7 @@ body {
 }
 
 .wd-body {
-  background: var(--c-bg-body);
+  background: #ffffff;
   padding: 36px 40px 48px;
   display: flex;
   flex-direction: column;
