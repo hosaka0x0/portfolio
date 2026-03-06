@@ -75,26 +75,14 @@ function WorkDetail({ client }) {
         </div>
       </div>
 
-      <div className="wd-body">
-        {work.works_overview && (
-          <div className="wd-section">
-            <p className="wd-text">{work.works_overview}</p>
-          </div>
-        )}
-        {work.works_images?.length > 0 && (
-          <div className="wd-image-grid">
-            {work.works_images.map((img, i) => (
-              <img key={i} src={img.url} alt={`image-${i}`} className="wd-image-grid-item" />
-            ))}
-          </div>
-        )}
-        {work.works_point && (
-          <div className="wd-section">
-            <h2 className="wd-section-title">デザインのポイント</h2>
-            <p className="wd-text">{work.works_point}</p>
-          </div>
-        )}
-      </div>
+      {work.works_content && (
+        <div className="wd-body">
+          <div
+            className="wd-rich-content"
+            dangerouslySetInnerHTML={{ __html: work.works_content }}
+          />
+        </div>
+      )}
     </div>
   )
 }

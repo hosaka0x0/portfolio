@@ -1111,6 +1111,16 @@ body {
   }
 }
 
+.wd-rich-content { font-size: 0.9rem; line-height: 2; color: #5a6c7a; }
+.wd-rich-content h2 { font-size: 1.05rem; font-weight: 700; color: var(--c-text-main); padding-left: 10px; border-left: 3px solid var(--c-accent); margin: 24px 0 8px; }
+.wd-rich-content h3 { font-size: 0.95rem; font-weight: 700; color: var(--c-text-main); margin: 20px 0 6px; }
+.wd-rich-content p { margin-bottom: 1em; }
+.wd-rich-content img { width: 100%; border-radius: var(--radius-M); margin: 16px 0; }
+.wd-rich-content a { color: var(--c-accent); text-decoration: underline; }
+.wd-rich-content ul, .wd-rich-content ol { padding-left: 1.5em; margin-bottom: 1em; }
+.wd-rich-content li { margin-bottom: 0.4em; }
+.wd-rich-content blockquote { border-left: 3px solid var(--c-accent); padding-left: 16px; color: #8a9aaa; margin: 16px 0; }
+.wd-rich-content code { font-family: 'Space Mono', monospace; font-size: 0.8em; background: rgba(107,133,155,0.1); padding: 2px 6px; border-radius: 4px; }
 
 /* ==========================================================================
    DIARY DETAIL
