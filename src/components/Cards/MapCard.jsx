@@ -54,7 +54,7 @@ useEffect(() => {
 
   return (
     <div className="bento-card card-map" style={{ padding: 0, overflow: 'hidden', position: 'relative' }}>
-      <div ref={mapContainer} style={{ position: 'absolute', inset: 0 }} />
+    <div ref={mapContainer} style={{ width: '100%', height: '100%' }} />
     </div>
   )
 }
