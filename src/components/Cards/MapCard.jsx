@@ -18,13 +18,18 @@ function MapCard() {
     mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN
 
     map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: getStyleByTime(),
-      center: [139.74633, 35.661581],
-      zoom: 14.5,
-      pitch: 70,
-      interactive: false
-    })
+    container: mapContainer.current,
+    style: getStyleByTime(),
+    center: [139.74633, 35.661581],
+    zoom: 14.5,
+    pitch: 70,
+    interactive: false
+  })
+
+  // ↓ これを追加
+  map.current.on('load', () => {
+    map.current.resize()
+  })
 
     return () => {
       if (map.current) {
